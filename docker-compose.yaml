@@ -1,0 +1,29 @@
+version: "3"
+services:
+  isu1:
+    container_name: isu1
+    build: .
+    environment:
+      - PORT=3000
+    volumes:
+      - ./:/go/src/github.com/karamaru-alpha/free-nginx
+    ports:
+      - "3000:3000"
+
+  isu2:
+    container_name: isu2
+    build: .
+    environment:
+      - PORT=3001
+    volumes:
+      - ./:/go/src/github.com/karamaru-alpha/free-nginx
+    ports:
+      - "3001:3001"
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"
