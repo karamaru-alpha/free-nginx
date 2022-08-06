@@ -24,6 +24,11 @@ func main() {
 		res := fmt.Sprintf("path. name=%s, port=%s", name, port)
 		return c.JSON(http.StatusOK, res)
 	})
+	e.GET("/path/:name/path", func(c echo.Context) error {
+		name := c.Param("name")
+		res := fmt.Sprintf("path path. name=%s, port=%s", name, port)
+		return c.JSON(http.StatusOK, res)
+	})
 
 	// クエリでの出し分け
 	e.GET("/query", func(c echo.Context) error {
